@@ -2,8 +2,10 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - ScoreTrigger
+  - Logic
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,33 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 359821431
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cloud1
+    uniqueID: 2601194581
+    locked: 0
+  - name: Cloud2
+    uniqueID: 397070081
+    locked: 0
+  - name: Pipe
+    uniqueID: 1609868171
+    locked: 0
+  - name: Player
+    uniqueID: 889287377
+    locked: 0
+  - name: Cloud0
+    uniqueID: 2520085111
+    locked: 0
+  - name: Score
+    uniqueID: 3725714459
+    locked: 0
+  - name: UI
+    uniqueID: 2170818691
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Bird : MonoBehaviour
 {
@@ -8,9 +9,19 @@ public class Bird : MonoBehaviour
     public List<Sprite> spriteList;
     public float animateSpeed = 0.15f;
     private int spriteIndex;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    ////////////////
+    
+    public Rigidbody2D bird;
+    public float flapStrength = 10f;
+    public bool isAlive = true;
+
+    ////////////////
+    
+    public Logic logic;
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<Logic>();
         InvokeRepeating(nameof(AnimateSprite), animateSpeed, animateSpeed);
     }
 
@@ -24,9 +35,29 @@ public class Bird : MonoBehaviour
         spriteRenderer.sprite = spriteList[spriteIndex];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && isAlive)
+        {
+            bird.linearVelocity = Vector2.up * flapStrength;
+        }
+        if ((transform.position.y > 7 || transform.position.y < -7) && isAlive)
+        {
+            isAlive = false;
+            logic.GameOver();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        isAlive = false;
+        logic.GameOver();
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ScoreTrigger") && isAlive)
+        {
+            logic.AddScore();
+        }
     }
 }
