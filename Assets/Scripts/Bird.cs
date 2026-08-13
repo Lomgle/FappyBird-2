@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,11 +19,16 @@ public class Bird : MonoBehaviour
 
     ////////////////
     
+    public GameObject hintText;
+
+    ////////////////
+    
     public Logic logic;
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<Logic>();
         InvokeRepeating(nameof(AnimateSprite), animateSpeed, animateSpeed);
+        Time.timeScale = 0.0f;
     }
 
     private void AnimateSprite()
@@ -37,21 +43,23 @@ public class Bird : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && isAlive)
+        if ((Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isAlive)
         {
+            Time.timeScale = 1.0f;
+            hintText.SetActive(false);
             bird.linearVelocity = Vector2.up * flapStrength;
         }
         if ((transform.position.y > 7 || transform.position.y < -7) && isAlive)
         {
             isAlive = false;
-            logic.GameOver();
+            StartCoroutine(logic.GameOver());
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         isAlive = false;
-        logic.GameOver();
+        StartCoroutine(logic.GameOver());
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
