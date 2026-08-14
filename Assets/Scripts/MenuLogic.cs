@@ -14,14 +14,16 @@ public class MenuLogic : MonoBehaviour
 
     /// ///////////////////////////////////
     
+    public GameObject secretLock;
+
+    /// ///////////////////////////////////
+    
     public ParticleSystem particleSystem;
 
     void Start()
     {
         particleSystem.Play();
         if (!PlayerPrefs.HasKey("FURINA")) PlayerPrefs.SetInt("FURINA", 0);
-        if (PlayerPrefs.GetInt("FURINA") == 0) furinaToggle.isOn = false;
-        else furinaToggle.isOn = true;
     }
     public void LoadGame()
     {
@@ -48,6 +50,16 @@ public class MenuLogic : MonoBehaviour
         if (Keyboard.current.escapeKey.wasPressedThisFrame && inPanel)
         {
             QuitSetting();
+        }
+        
+        if (PlayerPrefs.GetInt("FURINA") == 0) {
+            furinaToggle.isOn = false;
+            secretLock.SetActive(false);
+        }
+        else
+        {
+            furinaToggle.isOn = true;
+            secretLock.SetActive(true);
         }
     }
 }
