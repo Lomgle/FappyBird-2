@@ -13,16 +13,22 @@ public class Logic : MonoBehaviour
     //////////////////////////////////
     public Animator gameOver;
     public Animator gamePause;
+    public Animator gameSetting;
     public Canvas gamePauseCanvas;
     public int score = 0;
     public bool isPaused = false;
+    public bool inPanel = false;
     
     //////////////////////////////////
     public Bird bird;   
+    public GameObject furina;
 
+    //////////////////////////////////
+    public AudioSource backgroundSong;
+    public AudioSource scoreUp;
     void Start()
     {
-        Application.targetFrameRate = 60;
+        backgroundSong.Play();
         bird = GameObject.FindGameObjectWithTag("Player").GetComponent<Bird>();
         if (!PlayerPrefs.HasKey("BestScore"))
         {
@@ -33,13 +39,19 @@ public class Logic : MonoBehaviour
     public void AddScore(int scoreToAdd = 1)
     {
         score += scoreToAdd;
+        scoreUp.Play();
         scoreDisplay.text = score.ToString();
     }
 
     public IEnumerator GameOver()
     {
         Time.timeScale = 0.0f;
+        backgroundSong.Pause();
         yield return new WaitForSecondsRealtime(1.2f);
+        backgroundSong.UnPause();
+        backgroundSong.volume = 0.02f;
+        backgroundSong.pitch = 0.5f;
+
         gameOverScoreDisplay.text = score.ToString();
         if (score > PlayerPrefs.GetInt("BestScore")) PlayerPrefs.SetInt("BestScore", score);
         gameOverBestScoreDisplay.text = PlayerPrefs.GetInt("BestScore").ToString();
@@ -53,18 +65,32 @@ public class Logic : MonoBehaviour
 
     public void QuitGame()
     {
-        ;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void SettingGame()
+    {
+        inPanel = true;
+        gameSetting.SetTrigger("GAMESETTING");
+    }
+
+    public void QuitSettingGame()
+    {
+        inPanel = false;
+        gameSetting.SetTrigger("OUTSETTING");
     }
 
     public void PauseGame()
     {
         isPaused = true;
+        backgroundSong.volume = 0.02f;
         Time.timeScale = 0.0f;
         gamePause.SetTrigger("GAMEPAUSE");
     }
     public void ResumeGame()
     {
         isPaused = false;
+        backgroundSong.volume = 0.07f;
         gamePause.SetTrigger("GAMERESUME");
         Time.timeScale = 1.0f;
         Debug.Log("resumed");
@@ -72,10 +98,14 @@ public class Logic : MonoBehaviour
  
     void Update()
     {
+        if (PlayerPrefs.GetInt("FURINA") == 1) furina.SetActive(true);
+        else furina.SetActive(false);
+
         if (Keyboard.current.escapeKey.wasPressedThisFrame && bird.isAlive)
         {
             if (!isPaused) PauseGame();
-            else ResumeGame();
+            else if (!inPanel) ResumeGame();
+            else QuitSettingGame();
         }
 
     }

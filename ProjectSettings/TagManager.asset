@@ -67,6 +67,9 @@ TagManager:
   - name: UI
     uniqueID: 2170818691
     locked: 0
+  - name: UI Panel
+    uniqueID: 367287789
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

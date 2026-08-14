@@ -43,7 +43,7 @@ public class Bird : MonoBehaviour
 
     void Update()
     {
-        if ((Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isAlive)
+        if ((Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isAlive && !logic.isPaused)
         {
             Time.timeScale = 1.0f;
             hintText.SetActive(false);
