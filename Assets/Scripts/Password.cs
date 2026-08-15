@@ -1,15 +1,18 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Password : MonoBehaviour
 {
-
+    public Animator passwordPanel;
+    /// //////////////////////////
     public TextMeshProUGUI password_display;
     /// //////////////////////////
     
     private int code = 367;
     public int currentCode = 0;
+    public bool inPanel = false;
     
     public void AddNum(int num)
     {
@@ -33,9 +36,23 @@ public class Password : MonoBehaviour
         if (currentCode == code) Debug.Log("matched");
     }
 
+    public void OpenPanel()
+    {
+        inPanel = true;
+        passwordPanel.SetTrigger("OPEN");
+    }
+
+    public void QuitPanel()
+    {
+        inPanel = false;
+        passwordPanel.SetTrigger("CLOSE");
+    }
+
     void Update()
     {
         if (currentCode == 0) password_display.text = "000";
         else password_display.text = currentCode.ToString();
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && inPanel) QuitPanel();
     }
 }
