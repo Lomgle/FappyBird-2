@@ -14,6 +14,7 @@ public class Logic : MonoBehaviour
     public Animator gameOver;
     public Animator gamePause;
     public Animator gameSetting;
+    public Animator crossfadeAnim;
     public Canvas gamePauseCanvas;
     public int score = 0;
     public bool isPaused = false;
@@ -22,7 +23,6 @@ public class Logic : MonoBehaviour
     //////////////////////////////////
     public Bird bird;   
     public GameObject furina;
-
     //////////////////////////////////
     public AudioSource backgroundSong;
     public AudioSource scoreUp;
@@ -60,12 +60,13 @@ public class Logic : MonoBehaviour
     public void RetryGame()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Gameplay");
+        StartCoroutine(LoadNextScene("Gameplay"));
     }
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1.0f;
+        StartCoroutine(LoadNextScene("Menu"));
     }
 
     public void SettingGame()
@@ -108,5 +109,12 @@ public class Logic : MonoBehaviour
             else QuitSettingGame();
         }
 
+    }
+
+    IEnumerator LoadNextScene(string scene_name)
+    {
+        crossfadeAnim.SetTrigger("CROSSFADE");
+        yield return new WaitForSecondsRealtime(0.25f);
+        SceneManager.LoadScene(scene_name);
     }
 }

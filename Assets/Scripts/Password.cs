@@ -9,11 +9,15 @@ public class Password : MonoBehaviour
     /// //////////////////////////
     public TextMeshProUGUI password_display;
     /// //////////////////////////
-    
+    public MenuLogic logic;
     private int code = 367;
     public int currentCode = 0;
     public bool inPanel = false;
     
+    void Start()
+    {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<MenuLogic>();
+    }
     public void AddNum(int num)
     {
         if (currentCode % 10 > 0)
@@ -33,7 +37,9 @@ public class Password : MonoBehaviour
 
     public void CheckPassword()
     {
-        if (currentCode == code) Debug.Log("matched");
+        if (currentCode == code){
+            StartCoroutine(logic.LoadNextScene("Cshrine"));
+        }
     }
 
     public void OpenPanel()

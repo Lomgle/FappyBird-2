@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,7 @@ public class MenuLogic : MonoBehaviour
     /// ///////////////////////////////////
     
     public ParticleSystem particleSystem;
+    public Animator crossfadeAnim;
 
     void Start()
     {
@@ -27,9 +29,13 @@ public class MenuLogic : MonoBehaviour
     }
     public void LoadGame()
     {
-       SceneManager.LoadScene("Gameplay");
+       StartCoroutine(LoadNextScene("Gameplay"));
     }
 
+    public void EnterShrine()
+    {
+        StartCoroutine(LoadNextScene("Cshrine"));
+    }
     public void SettingGame()
     {
         gameSetting.SetTrigger("GAMESETTING");
@@ -61,5 +67,12 @@ public class MenuLogic : MonoBehaviour
             furinaToggle.isOn = true;
             secretLock.SetActive(true);
         }
+    }
+
+    public IEnumerator LoadNextScene(string scene_name)
+    {
+        crossfadeAnim.SetTrigger("CROSSFADE");
+        yield return new WaitForSecondsRealtime(0.25f);
+        SceneManager.LoadScene(scene_name);
     }
 }
