@@ -26,7 +26,7 @@ public class Dialogue : MonoBehaviour
         if (message_index < dialogues.Count)
         {
             StartCoroutine(DialogueAnimate(message_index,  typeSpeed));
-        }
+        } else gameObject.SetActive(false);
     }
 
     public void SkipConvo()

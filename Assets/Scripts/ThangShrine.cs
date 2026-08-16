@@ -7,8 +7,9 @@ public class ThangShrine : MonoBehaviour
     public GameObject fakeButton;
     public GameObject dialogueObject;
     public GameObject backButton;
+    public GameObject miku;
+    public GameObject miku_dialogue;
     public Dialogue dialogue;
-
     public Animator thangAnim;
     public Animator crossfadeAnim;
     /// //////////////////////////
@@ -20,8 +21,12 @@ public class ThangShrine : MonoBehaviour
         dialogue = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<Dialogue>();
         if (PlayerPrefs.HasKey("VISITEDSHRINE"))
         {
+            PlayerPrefs.SetInt("TALKED", 1);
             spriteRenderer.color = Color.clear;
             ThangLeft();
+            miku.SetActive(true);
+            miku_dialogue.SetActive(true);
+            AudioListener.volume = .05f;
         }
     }
 
@@ -65,6 +70,7 @@ public class ThangShrine : MonoBehaviour
     {
         crossfadeAnim.SetTrigger("CROSSFADE");
         yield return new WaitForSecondsRealtime(0.25f);
+        AudioListener.volume = 1;
         SceneManager.LoadScene(scene_name);
     }
 }

@@ -22,17 +22,32 @@ public class Logic : MonoBehaviour
     
     //////////////////////////////////
     public Bird bird;   
+    public BossControl bossControl;
     public GameObject furina;
+    public GameObject cloudSpawner;
+    public GameObject pipeSpawner;
     //////////////////////////////////
     public AudioSource backgroundSong;
     public AudioSource scoreUp;
+
+    
+    /// //////////////////////////////
+    public ParticleSystem windParticle;
     void Start()
     {
-        backgroundSong.Play();
-        bird = GameObject.FindGameObjectWithTag("Player").GetComponent<Bird>();
         if (!PlayerPrefs.HasKey("BestScore"))
         {
             PlayerPrefs.SetInt("BestScore", 0);
+        }
+        if (PlayerPrefs.HasKey("TALKED") && PlayerPrefs.HasKey("VISITEDSHRINE"))
+        {
+            cloudSpawner.SetActive(false);
+            pipeSpawner.SetActive(false);
+            bossControl.beginSequence();
+        } else {
+            backgroundSong.Play();
+            windParticle.Play();
+            Time.timeScale = 0.0f;
         }
 
     }

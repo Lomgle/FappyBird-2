@@ -44,6 +44,12 @@ TagManager:
   - name: Background
     uniqueID: 359821431
     locked: 0
+  - name: Score
+    uniqueID: 3725714459
+    locked: 0
+  - name: Thunder Background
+    uniqueID: 1490296443
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -62,8 +68,8 @@ TagManager:
   - name: Cloud0
     uniqueID: 2520085111
     locked: 0
-  - name: Score
-    uniqueID: 3725714459
+  - name: Rain
+    uniqueID: 583838817
     locked: 0
   - name: UI
     uniqueID: 2170818691

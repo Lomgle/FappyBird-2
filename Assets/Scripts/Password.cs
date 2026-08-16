@@ -10,7 +10,6 @@ public class Password : MonoBehaviour
     public TextMeshProUGUI password_display;
     /// //////////////////////////
     public MenuLogic logic;
-    private int code = 367;
     public int currentCode = 0;
     public bool inPanel = false;
     
@@ -37,7 +36,7 @@ public class Password : MonoBehaviour
 
     public void CheckPassword()
     {
-        if (currentCode == code){
+        if (currentCode == 367 || currentCode == 369){
             StartCoroutine(logic.LoadNextScene("Cshrine"));
         }
     }
