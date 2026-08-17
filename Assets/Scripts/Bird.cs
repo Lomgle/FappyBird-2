@@ -49,13 +49,13 @@ public class Bird : MonoBehaviour
             hintText.SetActive(false);
             bird.linearVelocityY = flapStrength;
         }
-        if ((Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) && PlayerPrefs.HasKey("TALKED"))
+        if ((Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) && PlayerPrefs.HasKey("TALKED") && isAlive && !logic.isPaused)
         {
             Time.timeScale = 1.0f;
             hintText.SetActive(false);
             bird.linearVelocityX = -mobileStrength;
         }
-        if ((Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) && PlayerPrefs.HasKey("TALKED"))
+        if ((Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) && PlayerPrefs.HasKey("TALKED") && isAlive && !logic.isPaused)
         {
             Time.timeScale = 1.0f;
             hintText.SetActive(false);
@@ -68,11 +68,11 @@ public class Bird : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        isAlive = false;
-        StartCoroutine(logic.GameOver());
-    }
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     isAlive = false;
+    //     StartCoroutine(logic.GameOver());
+    // }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("ScoreTrigger") && isAlive)

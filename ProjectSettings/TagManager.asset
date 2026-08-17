@@ -65,11 +65,23 @@ TagManager:
   - name: Player
     uniqueID: 889287377
     locked: 0
+  - name: Pipe Attack
+    uniqueID: 1779199493
+    locked: 0
   - name: Cloud0
     uniqueID: 2520085111
     locked: 0
   - name: Rain
     uniqueID: 583838817
+    locked: 0
+  - name: Fog
+    uniqueID: 2804061343
+    locked: 0
+  - name: Lighting
+    uniqueID: 3676226479
+    locked: 0
+  - name: Attack Indicator
+    uniqueID: 975873215
     locked: 0
   - name: UI
     uniqueID: 2170818691

@@ -62,10 +62,15 @@ public class Logic : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         backgroundSong.Pause();
+        bossControl.backgroundMusic1.Pause();
         yield return new WaitForSecondsRealtime(1.2f);
         backgroundSong.UnPause();
+        bossControl.backgroundMusic1.UnPause();
         backgroundSong.volume = 0.02f;
         backgroundSong.pitch = 0.5f;
+
+        bossControl.backgroundMusic1.volume = 0.02f;
+        bossControl.backgroundMusic1.pitch = 0.5f;
 
         gameOverScoreDisplay.text = score.ToString();
         if (score > PlayerPrefs.GetInt("BestScore")) PlayerPrefs.SetInt("BestScore", score);
@@ -100,12 +105,14 @@ public class Logic : MonoBehaviour
     {
         isPaused = true;
         backgroundSong.volume = 0.02f;
+        bossControl.backgroundMusic1.Pause();
         Time.timeScale = 0.0f;
         gamePause.SetTrigger("GAMEPAUSE");
     }
     public void ResumeGame()
     {
         isPaused = false;
+        bossControl.backgroundMusic1.UnPause();
         backgroundSong.volume = 0.07f;
         gamePause.SetTrigger("GAMERESUME");
         Time.timeScale = 1.0f;

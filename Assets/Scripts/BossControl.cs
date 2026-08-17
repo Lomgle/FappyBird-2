@@ -7,13 +7,22 @@ public class BossControl : MonoBehaviour
     public Animator bird;
     public Animator bossTitle;
     public Animator bossAnim;
+    public Animator finalCutscene;
     /// /////////////////////////
     public AudioSource backgroundMusic1;
     
     /// /////////////////////////
     public ParticleSystem rainParticle;
+    public ParticleSystem biggerRainParticle;
     /// /////////////////////////
+    public GameObject fogTint;
     public GameObject lighting;
+    public GameObject pipeSpawn;
+    public GameObject pipeSpawnBackward;
+    public GameObject pipeSpawnDiagonal;
+    public GameObject pipeLunge;
+    public GameObject pipeDangerous;
+    public GameObject pipeLungeSlow;
     public void beginSequence()
     {
         StartCoroutine(Setup());
@@ -37,11 +46,105 @@ public class BossControl : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         bossTitle.SetTrigger("APPEAR");
+        pipeSpawn.SetActive(true);
+
+        StartCoroutine(StageOne());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator StageOne()
     {
-        
+        for (int i = 1; i <= 5; i++)
+        {
+            Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation);
+            yield return new WaitForSeconds(2f);
+        }
+        pipeSpawn.SetActive(false);
+        pipeLunge.SetActive(true);
+        for (int i = 1; i <= 5; i++)
+        {
+            Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation);
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        pipeLunge.SetActive(false);
+        StartCoroutine(StageTwo());
+    }
+
+    IEnumerator StageTwo()
+    {
+        pipeDangerous.SetActive(true);
+        yield return new WaitForSeconds(4.5f);
+        pipeLungeSlow.SetActive(true);
+        yield return new WaitForSeconds(4.5f);
+
+        pipeLungeSlow.SetActive(false);
+        for (int i = 1; i <= 7; i++)
+        {
+            Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation);
+            yield return new WaitForSeconds(2.0f);
+        }
+        pipeDangerous.SetActive(false);
+
+        for (int i = 1; i <= 3; i++) Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation);
+        pipeLunge.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        pipeLunge.SetActive(false);
+        StartCoroutine(StageThree());
+    }
+
+    IEnumerator StageThree()
+    {
+        pipeSpawn.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        pipeSpawnBackward.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        for (int i = 1; i <= 5; i++)
+        {
+            Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation);  
+            yield return new WaitForSeconds(2f);
+        }
+        pipeSpawn.SetActive(false);
+        pipeSpawnBackward.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(SpamLaser(10));
+        rainParticle.Stop();
+
+        yield return new WaitForSeconds(9f);
+        pipeSpawnDiagonal.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        biggerRainParticle.Play();
+        fogTint.SetActive(true);
+
+        yield return new WaitForSeconds(9f);
+        biggerRainParticle.Stop();
+        fogTint.SetActive(false);
+        pipeSpawnDiagonal.SetActive(false);
+        skyAnim.SetTrigger("SUNNY");
+        bird.SetTrigger("DRY");
+
+        yield return new WaitForSeconds(1.5f);
+        backgroundMusic1.Stop();
+
+        yield return new WaitForSeconds(1f);
+        bossAnim.SetTrigger("FINAL");
+        yield return new WaitForSeconds(3f);
+    }
+
+    IEnumerator SpamLaser(int time)
+    {
+        for (int i = 1; i <= time; i++)
+        {
+            if (i > time / 2)
+            {
+                Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation); 
+            } else
+            {
+                Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation); 
+                Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation); 
+            } 
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

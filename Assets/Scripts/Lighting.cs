@@ -11,6 +11,6 @@ public class Lighting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(gameObject, 6f);
     }
 }
