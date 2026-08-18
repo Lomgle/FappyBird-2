@@ -27,6 +27,7 @@ public class Setting : MonoBehaviour
     {
         lastWidth = Screen.width;
         lastHeight = Screen.height;
+        InvokeRepeating(nameof(FullscreenUpdate), 1f, 1f);
         Application.targetFrameRate = 60;
         if (!PlayerPrefs.HasKey("MUSIC")) PlayerPrefs.SetFloat("MUSIC", 0f);
         if (!PlayerPrefs.HasKey("SFX")) PlayerPrefs.SetFloat("SFX", 0f);
@@ -97,7 +98,7 @@ public class Setting : MonoBehaviour
         else PlayerPrefs.SetInt("FURINA", 0);
     }
 
-    void FixedUpdate()
+    void FullscreenUpdate()
     {
         if (!Fullscreen) LockWindowRatio();
     }

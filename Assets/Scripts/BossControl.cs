@@ -54,7 +54,7 @@ public class BossControl : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         bossTitle.SetTrigger("APPEAR");
-
+        logic.SetScore(36);
         StartCoroutine(StageOne());
     }
 
@@ -146,7 +146,7 @@ public class BossControl : MonoBehaviour
         finalCutscene.SetTrigger("PLAY");
         yield return new WaitForSeconds(92f);
         pipeSpawnerNormal.SetActive(true);
-        logic.AddScore(67);
+        logic.AddScore(31);
         cloudSpawner.SetActive(true);
         birdObject.freezeBird = false;
     }

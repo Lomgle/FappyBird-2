@@ -57,6 +57,11 @@ public class Logic : MonoBehaviour
         scoreUp.Play();
         scoreDisplay.text = score.ToString();
     }
+    public void SetScore(int newScore)
+    {
+        score = newScore;
+        scoreDisplay.text = newScore.ToString();
+    }
 
     public IEnumerator GameOver()
     {

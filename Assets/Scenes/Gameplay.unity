@@ -190,10 +190,10 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
-    bottomRight: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    topLeft: {r: 0.7294118, g: 0.02745098, b: 1, a: 1}
+    topRight: {r: 0.7294118, g: 0.02745098, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 0.015686275}
+    bottomRight: {r: 1, g: 1, b: 1, a: 0.015686275}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -8434,7 +8434,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000777072158ba3f45f1be411de77723596d172013555140b9b01cfaa1783106481ed5de4157b1ed45861accc22056e0c6abfa42a3a9f9422a7afc31edb
+  m_ApplyToSortingLayers: 00000000777072158ba3f45f1be411de77723596d172013555140b9b01cfaa1783106481ed5de4157b1ed45861accc22056e0c6abfa42a3a9f9422a7afc31edb873c55f6
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -8987,7 +8987,7 @@ Transform:
   m_GameObject: {fileID: 701295506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.43, y: -16.13, z: 0}
+  m_LocalPosition: {x: -15, y: -15.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24934,7 +24934,7 @@ Transform:
   m_GameObject: {fileID: 1826683086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.53, y: -0.93, z: 0}
+  m_LocalPosition: {x: 15, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26404,7 +26404,7 @@ Canvas:
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -618740817
+  m_SortingLayerID: -162186105
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2089146072

@@ -83,6 +83,9 @@ TagManager:
   - name: Score
     uniqueID: 3725714459
     locked: 0
+  - name: Credit
+    uniqueID: 4132781191
+    locked: 0
   - name: UI
     uniqueID: 2170818691
     locked: 0

@@ -42,6 +42,12 @@ public class MenuLogic : MonoBehaviour
         inPanel = true;
     }
 
+    public void DeleteData()
+    {
+        PlayerPrefs.DeleteAll();
+        Application.Quit();
+        Debug.Log("registered");
+    }
     public void QuitSetting()
     {
         gameSetting.SetTrigger("OUTSETTING");
