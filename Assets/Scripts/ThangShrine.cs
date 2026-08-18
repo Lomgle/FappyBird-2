@@ -50,7 +50,7 @@ public class ThangShrine : MonoBehaviour
         || dialogue.message_index == 26) fakeButton.SetActive(true);
         else fakeButton.SetActive(false);
 
-        if (dialogue.message_index == 41)
+        if (dialogue.message_index == 42)
         {
             ThangLeft();
             PlayerPrefs.SetInt("VISITEDSHRINE", 1);

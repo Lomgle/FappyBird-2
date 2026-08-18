@@ -8,6 +8,7 @@ public class BossControl : MonoBehaviour
     public Animator bossTitle;
     public Animator bossAnim;
     public Animator finalCutscene;
+    public Animator cameraAnim;
     /// /////////////////////////
     public AudioSource backgroundMusic1;
     
@@ -23,6 +24,12 @@ public class BossControl : MonoBehaviour
     public GameObject pipeLunge;
     public GameObject pipeDangerous;
     public GameObject pipeLungeSlow;
+
+    public GameObject pipeSpawnerNormal;
+    public GameObject cloudSpawner;
+    /// ///////////////////////////////
+    public Logic logic;
+    public Bird birdObject;
     public void beginSequence()
     {
         StartCoroutine(Setup());
@@ -30,6 +37,7 @@ public class BossControl : MonoBehaviour
 
     IEnumerator Setup()
     {
+        cameraAnim.SetTrigger("WIGGLE");
         backgroundMusic1.Play();
         skyAnim.SetTrigger("THUNDER");
         bird.SetTrigger("WET");
@@ -46,7 +54,6 @@ public class BossControl : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         bossTitle.SetTrigger("APPEAR");
-        pipeSpawn.SetActive(true);
 
         StartCoroutine(StageOne());
     }
@@ -58,7 +65,6 @@ public class BossControl : MonoBehaviour
             Instantiate(lighting, new Vector3(Random.Range(-6f, 6f), 0f, 0f), transform.rotation);
             yield return new WaitForSeconds(2f);
         }
-        pipeSpawn.SetActive(false);
         pipeLunge.SetActive(true);
         for (int i = 1; i <= 5; i++)
         {
@@ -126,10 +132,23 @@ public class BossControl : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         backgroundMusic1.Stop();
+        cameraAnim.SetTrigger("NORMAL");
 
         yield return new WaitForSeconds(1f);
         bossAnim.SetTrigger("FINAL");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
+        birdObject.freezeBird = true;
+        StartCoroutine(StageFinal());
+    }
+
+    IEnumerator StageFinal()
+    {
+        finalCutscene.SetTrigger("PLAY");
+        yield return new WaitForSeconds(92f);
+        pipeSpawnerNormal.SetActive(true);
+        logic.AddScore(67);
+        cloudSpawner.SetActive(true);
+        birdObject.freezeBird = false;
     }
 
     IEnumerator SpamLaser(int time)

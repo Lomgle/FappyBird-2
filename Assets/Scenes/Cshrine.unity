@@ -354,6 +354,8 @@ MonoBehaviour:
   - TRLT SEE
   - THE
   - TIMESKIP OX.
+  - Btw, sorry for making ton of typos, my s key is broken so i had to remap entire
+    keyboard.
   - see you soon.
   message_index: 0
   message: {fileID: 1781515528}
@@ -1648,7 +1650,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f1f73813deab6f644a61807d302e00d8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.256
+  m_Volume: 0.047
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1776,7 +1778,12 @@ MonoBehaviour:
   - Please do not irritate him! O.O
   - "He is a sensitive person and will not TOLERATE any individuals that rage bait
     him!! >\uFE3F< "
+  - He will LASER you if you mess up with him! X_X
+  - 'However, I heard a storm is coming here, so he will not be able to laser you!!
+    OwO '
   - 'That is all I have to say. . . Bye!!! (ToT)/~~~ '
+  - "\u3068\u3053\u308D\u3067\u3001\u3042\u306A\u305F\u306F\u53EF\u611B\u3044\u3067\u3059\u306D\u3002^o^"
+  - "\u4ECA\u3059\u3050\u518D\u8A66\u884C\u3057\u307E\u3059\u304B\uFF1F  ^_~"
   message_index: 0
   message: {fileID: 520710170}
   isTyping: 0

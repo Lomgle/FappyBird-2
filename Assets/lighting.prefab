@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6383504735368674588}
   - component: {fileID: 7613721618007450949}
+  - component: {fileID: 5578793170244537766}
   m_Layer: 0
   m_Name: warning_indicator
   m_TagString: Untagged
@@ -92,6 +93,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!61 &5578793170244537766
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925239206442127512}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.0011783764, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.26564002, y: 0.74}
+  m_EdgeRadius: 0
 --- !u!1 &5829241390744941084
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +152,6 @@ GameObject:
   - component: {fileID: 1824017704407401742}
   - component: {fileID: 3182669586072541495}
   - component: {fileID: 6606856075869497493}
-  - component: {fileID: 6369182934829288120}
   m_Layer: 0
   m_Name: lighting
   m_TagString: Untagged
@@ -202,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
-  m_IsGlobal: 0
+  m_IsGlobal: 1
   priority: 0.74
   blendDistance: 30.42
   weight: 1
@@ -242,27 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   thunder: {fileID: 4103696278185762025}
---- !u!65 &6369182934829288120
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5829241390744941084}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.15646917, y: 0.7785185, z: 0.20000005}
-  m_Center: {x: -0.010271556, y: -0.019259252, z: 0}
 --- !u!1 &6821389512449945397
 GameObject:
   m_ObjectHideFlags: 0

@@ -79,12 +79,14 @@ public class Logic : MonoBehaviour
     }
     public void RetryGame()
     {
+        AudioListener.pause = false;
         Time.timeScale = 1.0f;
         StartCoroutine(LoadNextScene("Gameplay"));
     }
 
     public void QuitGame()
     {
+        AudioListener.pause = false;
         Time.timeScale = 1.0f;
         StartCoroutine(LoadNextScene("Menu"));
     }
@@ -104,19 +106,16 @@ public class Logic : MonoBehaviour
     public void PauseGame()
     {
         isPaused = true;
-        backgroundSong.volume = 0.02f;
-        bossControl.backgroundMusic1.Pause();
         Time.timeScale = 0.0f;
+        AudioListener.pause = true;
         gamePause.SetTrigger("GAMEPAUSE");
     }
     public void ResumeGame()
     {
         isPaused = false;
-        bossControl.backgroundMusic1.UnPause();
-        backgroundSong.volume = 0.07f;
-        gamePause.SetTrigger("GAMERESUME");
+        AudioListener.pause = false;
         Time.timeScale = 1.0f;
-        Debug.Log("resumed");
+        gamePause.SetTrigger("GAMERESUME");
     }
  
     void Update()

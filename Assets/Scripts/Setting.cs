@@ -28,14 +28,8 @@ public class Setting : MonoBehaviour
         lastWidth = Screen.width;
         lastHeight = Screen.height;
         Application.targetFrameRate = 60;
-        if (PlayerPrefs.HasKey("MUSIC"))
-        {
-            musicSlider.value = PlayerPrefs.GetFloat("MUSIC");
-        }
-        if (PlayerPrefs.HasKey("SFX"))
-        {
-            sfxSlider.value = PlayerPrefs.GetFloat("SFX");
-        }
+        if (!PlayerPrefs.HasKey("MUSIC")) PlayerPrefs.SetFloat("MUSIC", 0f);
+        if (!PlayerPrefs.HasKey("SFX")) PlayerPrefs.SetFloat("SFX", 0f);
         if (PlayerPrefs.HasKey("FULLSCREEN"))
         {
             if (PlayerPrefs.GetInt("FULLSCREEN") == 1) {
@@ -47,6 +41,8 @@ public class Setting : MonoBehaviour
                 Fullscreen = false;
             }
         }
+        musicSlider.value = PlayerPrefs.GetFloat("MUSIC");
+        sfxSlider.value = PlayerPrefs.GetFloat("SFX");
     }
 
     public void SetVolumeMusic(float volume)
@@ -101,7 +97,7 @@ public class Setting : MonoBehaviour
         else PlayerPrefs.SetInt("FURINA", 0);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!Fullscreen) LockWindowRatio();
     }
