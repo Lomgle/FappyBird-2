@@ -86,6 +86,9 @@ TagManager:
   - name: Credit
     uniqueID: 4132781191
     locked: 0
+  - name: Flashbang
+    uniqueID: 3711394861
+    locked: 0
   - name: UI
     uniqueID: 2170818691
     locked: 0
